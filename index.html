@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preetham Deekonda | Data & AI Engineer</title>
+    <meta name="description" content="Portfolio of Preetham Deekonda – Data & AI Engineer specializing in Python-driven AI engineering, applied machine learning, and secure backend architecture.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Base Variables */
+        :root {
+            --bg-dark: #0a0a0f;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-secondary: #a855f7; /* Purple */
+            --accent-tertiary: #ec4899; /* Pink */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --container-width: 1200px;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        ul { list-style: none; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .accent { color: var(--accent-secondary); }
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+        .section { padding: 100px 0; position: relative; z-index: 2; }
+        .section-title { font-size: 2.5rem; margin-bottom: 50px; text-align: center; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+
+        /* Background & Glass Effects */
+        .interactive-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; overflow: hidden; pointer-events: none; }
+        .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; transition: transform 0.2s ease-out; }
+        .orb-1 { top: -10%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-primary), transparent 70%); }
+        .orb-2 { bottom: -10%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, var(--accent-secondary), transparent 70%); }
+        .grid-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        .glass-nav {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(10, 10, 15, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border); padding: 20px 0;
+        }
+
+        .glass-panel, .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card:hover { border-color: var(--glass-highlight); background: rgba(255, 255, 255, 0.08); }
+
+        /* Navigation */
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; font-family: var(--font-heading); }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links li a { font-size: 0.95rem; font-weight: 500; position: relative; opacity: 0.8; }
+        .nav-links li a:hover, .nav-links li a.active { opacity: 1; color: var(--accent-primary); }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            color: white; padding: 12px 28px; border-radius: 50px; font-weight: 600;
+            display: inline-block; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5); }
+        .btn-secondary {
+            background: transparent; color: white; padding: 11px 27px; border-radius: 50px;
+            font-weight: 600; border: 1px solid var(--glass-highlight); margin-left: 15px; display: inline-block;
+        }
+        .btn-secondary:hover { background: var(--glass-bg); border-color: var(--accent-primary); }
+
+        /* Hero Section */
+        .hero-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding-top: 80px; z-index: 2; }
+        .hero-name-centered { text-align: center; margin-bottom: 40px; width: 100%; }
+        .hero-name-centered h1 { font-size: 5rem; line-height: 1.1; letter-spacing: -1px; margin: 0; }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; width: 100%; }
+        .hero-text h1 { display: none; }
+        .hero-text p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 30px; max-width: 500px; }
+        .hero-visual { display: block; }
+        .hero-card { padding: 30px; position: relative; transform: perspective(1000px) rotateY(-10deg) rotateX(10deg); transition: transform 0.5s ease; }
+        .hero-card:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+        .code-snippet { font-family: 'Fira Code', monospace; font-size: 0.9rem; color: #e2e8f0; background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; }
+        .keyword { color: #c678dd; }
+        .function { color: #61afef; }
+        .class { color: #e5c07b; }
+        .return { color: #c678dd; }
+        .card-icon { position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: var(--accent-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+
+        /* About Section */
+        .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 50px; align-items: center; }
+        .image-placeholder { width: 100%; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--accent-secondary); background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1), transparent); }
+        .about-content { padding: 40px; }
+        .about-content p { margin-bottom: 20px; color: var(--text-secondary); }
+        .stats-row { display: flex; gap: 40px; margin-top: 30px; border-top: 1px solid var(--glass-border); padding-top: 20px; }
+        .stat-item h3 { font-size: 2.5rem; color: var(--accent-primary); }
+        .stat-item p { color: var(--text-primary); font-size: 0.9rem; margin: 0; }
+
+        /* Skills Section */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .skill-card { padding: 30px; text-align: center; transition: transform 0.3s ease; }
+        .skill-card:hover { transform: translateY(-10px); }
+        .skill-icon { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent-tertiary); }
+        .skill-card h3 { margin-bottom: 15px; font-size: 1.2rem; }
+        .skill-card p { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* Projects Section */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-card { padding: 30px; transition: all 0.3s ease; display: flex; flex-direction: column; height: 100%; }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--accent-primary); }
+        .project-content h3 { margin-bottom: 15px; }
+        .project-content p { color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem; flex-grow: 1; }
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .tags span { font-size: 0.8rem; padding: 5px 12px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; border: 1px solid var(--glass-border); }
+        .project-link { font-size: 0.9rem; color: var(--accent-primary); font-weight: 600; }
+        .project-link:hover { color: var(--accent-secondary); }
+
+        /* Contact Section */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .contact-info, .contact-form { padding: 40px; }
+        .contact-info h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--text-primary); }
+        .contact-info p { color: var(--text-secondary); margin-bottom: 30px; }
+        .info-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .info-item i { color: var(--accent-primary); font-size: 1.1rem; width: 20px; text-align: center; }
+        .info-item p { margin: 0; color: var(--text-primary); }
+        .social-links-contact { display: flex; gap: 15px; margin-top: 30px; }
+        .social-btn-small { width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.3s ease; border: 1px solid var(--glass-border); }
+        .social-btn-small:hover { background: var(--accent-primary); color: white; transform: translateY(-3px); }
+
+        /* Form Styles */
+        .form-group { margin-bottom: 20px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: all 0.3s ease; }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent-primary); background: rgba(255, 255, 255, 0.08); }
+        .contact-form button { width: 100%; border: none; cursor: pointer; font-size: 1rem; margin-top: 10px; }
+
+        /* Footer */
+        footer { padding: 40px 0; text-align: center; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--glass-border); margin-top: 50px; }
+
+        /* Utilities / Animations */
+        .fade-in { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s forwards; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-600 { animation-delay: 0.6s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* Typing Cursor Animation */
+        .cursor { display: inline-block; width: 3px; background-color: var(--accent-primary); animation: blink 1s infinite; margin-left: 5px; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Extra styles for new sections */
+        .experience-timeline { position: relative; padding-left: 30px; }
+        .experience-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary)); }
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-dot { position: absolute; left: -26px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-primary); border: 2px solid var(--bg-primary); box-shadow: 0 0 10px var(--accent-primary); }
+        .timeline-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+        .timeline-title { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin: 0; }
+        .timeline-org { font-size: 0.9rem; color: var(--accent-primary); font-weight: 500; margin: 2px 0 10px 0; }
+        .timeline-date { font-size: 0.8rem; color: var(--text-secondary); background: rgba(255, 255, 255, 0.05); padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); white-space: nowrap; }
+        .timeline-bullets { list-style: none; padding: 0; margin: 0; }
+        .timeline-bullets li { position: relative; padding-left: 18px; margin-bottom: 8px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+        .timeline-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--accent-primary); }
+        .skills-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .skill-chip-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .skill-chip { background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.3); color: var(--text-primary); font-size: 0.78rem; padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; }
+        .edu-card { display: flex; align-items: flex-start; gap: 20px; }
+        .edu-icon { font-size: 2rem; color: var(--accent-primary); flex-shrink: 0; margin-top: 4px; }
+        .edu-details h3 { margin: 0 0 4px 0; font-size: 1.1rem; color: var(--text-primary); }
+        .edu-details p { margin: 0 0 6px 0; font-size: 0.9rem; }
+        .edu-badge { display: inline-block; background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.3); color: var(--accent-primary); font-size: 0.8rem; padding: 3px 12px; border-radius: 20px; }
+        #experience .section-title, #education .section-title { margin-bottom: 40px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 3rem; }
+            .hero-btns { justify-content: center; display: flex; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hamburger { display: block; font-size: 1.5rem; cursor: pointer; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 769px) { .hamburger { display: none; } }
+    </style>
+</head>
+
+<body>
+
+<div class="interactive-bg">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="grid-overlay"></div>
+</div>
+
+<nav class="glass-nav">
+    <div class="container nav-container">
+        <a href="#" class="logo">Preetham<span class="accent">.AI</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact" class="btn-primary">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<section id="hero" class="hero-section">
+    <div class="container">
+        <div class="hero-name-centered">
+            <h1 class="fade-in">
+                <span class="gradient-text">Preetham</span> <span class="gradient-text">Deekonda</span>
+            </h1>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="fade-in delay-200" style="color: var(--text-primary); font-size: 1.8rem; margin: 0 0 20px 0; min-height: 40px; text-align: left;">
+                    <span id="typing-text"></span><span class="cursor">|</span>
+                </h2>
+                <div class="tech-stack-ticker fade-in delay-400" style="font-family: 'Fira Code', monospace; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 30px; text-align: left;">
+                    Python • Machine Learning • LLM Fine-tuning • FastAPI • Docker • ETL Pipelines
+                </div>
+                <p class="fade-in delay-600">Data & AI Engineer with an M.S. in Big Data Analytics. Building practical, scalable AI systems — from NLP microservices to computer vision pipelines — for enterprise teams.</p>
+                <div class="hero-btns fade-in delay-400">
+                    <a href="#projects" class="btn-primary">View Work</a>
+                    <a href="#contact" class="btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-in delay-600">
+                <div class="glass-card hero-card">
+                    <div class="code-snippet">
+                            <pre><code><span class="keyword">def</span> <span class="function">join_team</span>(company):
+    model = <span class="class">Candidate</span>(me)
+    <span class="return">return</span> model.fit(company)</code></pre>
+                    </div>
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section">
+    <div class="container">
+        <h2 class="section-title">About <span class="accent">Me</span></h2>
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="image-placeholder glass-panel">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+            </div>
+            <div class="about-content glass-panel">
+                <p>I am a <strong>Data & AI Engineer</strong> focused on moving past theoretical models into actual execution. During my Master’s in Big Data Analytics, I realized my core strength is connecting complex backend architecture with applied machine learning.</p>
+                <p>Whether I am writing Python microservices, programming job automation engines, or engineering computer vision pipelines, I build systems that solve immediate operational bottlenecks and scale reliably for enterprise teams.</p>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <h3>4</h3>
+                        <p>Projects</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>M.S.</h3>
+                        <p>Big Data Analytics</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Python</h3>
+                        <p>Core Stack</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="section">
+    <div class="container">
+        <h2 class="section-title">Technical <span class="accent">Skills</span></h2>
+        <div class="skills-categories">
+
+            <div class="glass-card skill-card">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3>Languages</h3>
+                <div class="skill-chip-group">
+                    <span class="skill-chip">Python</span>
+                    <span class="skill-chip">SQL</span>
+                    <span class="skill-chip">Java</span>
+                    <span class="skill-chip">HTML/CSS</span>
+                    <span class="skill-chip">JavaScript</span>
+                    <span class="skill-chip">YAML</span>
+                    <span class="skill-chip">JSON</span>
+                    <span class="skill-chip">XML</span>
+                </div>
+            </div>
+
+            <div class="glass-card skill-card">
+                <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>Web & Systems</h3>
+                <div class="skill-chip-group">
+                    <span class="skill-chip">FastAPI</span>
+                    <span class="skill-chip">Flask</span>
+                    <span class="skill-chip">Spring Boot</span>
+                    <span class="skill-chip">REST APIs</span>
+                    <span class="skill-chip">Selenium</span>
+                    <span class="skill-chip">Asyncio</span>
+                </div>
+            </div>
+
+            <div class="glass-card skill-card">
+                <div class="skill-icon"><i class="fab fa-python"></i></div>
+                <h3>Data & Models</h3>
+                <div class="skill-chip-group">
+                    <span class="skill-chip">Pandas</span>
+                    <span class="skill-chip">NumPy</span>
+                    <span class="skill-chip">Hugging Face</span>
+                    <span class="skill-chip">Scikit-learn</span>
+                    <span class="skill-chip">ETL Pipelines</span>
+                    <span class="skill-chip">LLM Fine-tuning</span>
+                    <span class="skill-chip">Predictive Modeling</span>
+                </div>
+            </div>
+
+            <div class="glass-card skill-card">
+                <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+                <h3>Cloud & DevOps</h3>
+                <div class="skill-chip-group">
+                    <span class="skill-chip">Docker</span>
+                    <span class="skill-chip">Kubernetes</span>
+                    <span class="skill-chip">MLflow</span>
+                    <span class="skill-chip">Git</span>
+                    <span class="skill-chip">Linux</span>
+                    <span class="skill-chip">Wireshark</span>
+                    <span class="skill-chip">SQLite</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="education" class="section">
+    <div class="container">
+        <h2 class="section-title">Edu<span class="accent">cation</span></h2>
+        <div class="glass-panel" style="padding: 30px;">
+            <div class="edu-card">
+                <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="edu-details">
+                    <h3>Master of Science in Big Data Analytics & Information Technology</h3>
+                    <p style="color: var(--accent-primary); font-weight: 500;">University of Central Missouri — Warrensburg, MO</p>
+                    <span class="edu-badge">Graduated Dec 2025</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="experience" class="section">
+    <div class="container">
+        <h2 class="section-title">Work <span class="accent">Experience</span></h2>
+        <div class="experience-timeline glass-panel" style="padding: 30px 30px 10px 50px;">
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <div>
+                        <p class="timeline-title">Machine Learning & Application Lead <span style="color:var(--text-secondary); font-weight:400;">(Graduate Capstone)</span></p>
+                        <p class="timeline-org"><i class="fas fa-building" style="margin-right:6px;"></i>University of Central Missouri — Warrensburg, MO</p>
+                    </div>
+                    <span class="timeline-date">June 2023 – Dec 2025</span>
+                </div>
+                <ul class="timeline-bullets">
+                    <li>Reduced faculty administrative overhead by <strong>40%</strong> by building a secure Java Spring Boot application that automated manual quiz grading, quiz generation, and question bank organization.</li>
+                    <li>Developed a custom ETL pipeline using <strong>pdfplumber</strong> to extract text and tables from raw PDFs, enabling the system to ingest complex course materials without image noise.</li>
+                    <li>Engineered a <strong>Flask microservice</strong> using TF-IDF vectorization to automatically map bulk-imported questions to textbook chapters, solving a primary categorization bottleneck.</li>
+                    <li>Programmed an automated engine that reviews student quiz scores and generates personalized study reports pinpointing which chapters need review.</li>
+                    <li>Secured the entire platform and all student data using custom <strong>Two-Factor Authentication (2FA)</strong> and Spring Security filters.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section">
+    <div class="container">
+        <h2 class="section-title">Key <span class="accent">Projects</span></h2>
+        <div class="projects-grid">
+
+            <div class="project-card glass-panel">
+                <div class="project-content">
+                    <h3>Autonomous Workflow Automation Engine</h3>
+                    <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:10px;">Dec 2025 – Present</p>
+                    <p><strong>Maintained 99% automation uptime</strong> on dynamic React frontends by building a high-concurrency Python engine. Bypassed anti-bot measures using NumPy physics vectors to simulate organic mouse movements and Log-Normal distributions to randomize click delays.</p>
+                    <div class="tags">
+                        <span>Python</span><span>Nodriver</span><span>NumPy</span><span>Asyncio</span>
+                    </div>
+                    <a href="#" class="project-link">View Live Demo <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card glass-panel">
+                <div class="project-content">
+                    <h3>Content Recommendation & Clustering Engine</h3>
+                    <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:10px;">Oct 2023 – Dec 2023</p>
+                    <p><strong>Accelerated the publishing lifecycle by 30%</strong> by automating news categorization through a custom Python ETL pipeline. Visualized semantic clusters in Power BI and engineered a recommendation algorithm to map user reading history to personalized content.</p>
+                    <div class="tags">
+                        <span>Python</span><span>Pandas</span><span>Power BI</span><span>Scikit-learn</span>
+                    </div>
+                    <a href="#" class="project-link">View Live Demo <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card glass-panel">
+                <div class="project-content">
+                    <h3>Real-Time Intrusion Detection Pipeline</h3>
+                    <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:10px;">Feb 2022 – May 2022</p>
+                    <p><strong>Identified authorized personnel with real-time precision</strong> using an OpenCV facial recognition pipeline. Engineered an automated SMTP event-response system for instant evidence capture and built a Flask command center for remote monitoring control.</p>
+                    <div class="tags">
+                        <span>Python</span><span>OpenCV</span><span>Flask</span><span>Real-Time Analytics</span>
+                    </div>
+                    <a href="#" class="project-link">View Video Walkthrough <i class="fas fa-video"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <div class="container">
+        <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
+        <div class="contact-grid">
+            <div class="contact-info glass-panel">
+                <h3>Let's Collaborate</h3>
+                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Overland Park, KS</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:preethamdeekonda01@gmail.com" style="color:inherit;text-decoration:none;">preethamdeekonda01@gmail.com</a></p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>+1 (913) 265-6451</p>
+                </div>
+
+                <div class="social-links-contact">
+                    <a href="#" class="social-btn-small" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-btn-small" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <form class="contact-form glass-panel" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="5" required placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Preetham Deekonda. All rights reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax Mouse Effect
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const orb1 = document.querySelector('.orb-1');
+            const orb2 = document.querySelector('.orb-2');
+            const moveX1 = (mouseX / window.innerWidth) * 30;
+            const moveY1 = (mouseY / window.innerHeight) * 30;
+            const moveX2 = (mouseX / window.innerWidth) * -30;
+            const moveY2 = (mouseY / window.innerHeight) * -30;
+            if (orb1) orb1.style.transform = `translate(${moveX1}px, ${moveY1}px)`;
+            if (orb2) orb2.style.transform = `translate(${moveX2}px, ${moveY2}px)`;
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Logo hover effect
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            logo.addEventListener('mouseover', () => { logo.style.transform = 'scale(1.05)'; });
+            logo.addEventListener('mouseout', () => { logo.style.transform = 'scale(1)'; });
+        }
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                alert(`Thanks ${name}! Your message has been sent.`);
+                contactForm.reset();
+            });
+        }
+
+        // Typewriter Effect
+        const titles = ["AI Engineer", "Data Scientist", "Data Analyst", "Data Engineer"];
+        const typingElement = document.getElementById('typing-text');
+        let titleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            if (!typingElement) return;
+            const currentTitle = titles[titleIndex];
+            const nextTitle = titles[(titleIndex + 1) % titles.length];
+            let commonPrefixLength = 0;
+
+            if (isDeleting) {
+                let i = 0;
+                while (i < currentTitle.length && i < nextTitle.length && currentTitle[i] === nextTitle[i]) {
+                    i++;
+                }
+                commonPrefixLength = i;
+            }
+
+            if (isDeleting) {
+                typingElement.textContent = currentTitle.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+                if (charIndex <= commonPrefixLength) {
+                    isDeleting = false;
+                    titleIndex = (titleIndex + 1) % titles.length;
+                    typeSpeed = 500;
+                }
+            } else {
+                typingElement.textContent = currentTitle.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+                if (charIndex === currentTitle.length) {
+                    isDeleting = true;
+                    typeSpeed = 2000;
+                }
+            }
+            setTimeout(type, typeSpeed);
+        }
+        type();
+    });
+</script>
+</body>
+</html>
