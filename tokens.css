@@ -1,0 +1,64 @@
+/* Hallmark · macrostructure: Marquee Hero · genre: modern-minimal ·
+   theme: custom (vibe: "sharp technical dark blue-indigo" ·
+   paper oklch(12% 0.01 252) · accent oklch(68% 0.17 252) cool-blue-indigo ·
+   Geist 800 display + Geist 350 body + Geist Mono outlier)
+   nav: N5 floating-pill · footer: Ft2 inline-rule-single-line
+   axes: dark / geometric-sans / cool */
+
+:root {
+  /* ── Colour ─────────────────────────────────── */
+  /* Anchor hue: 252 (blue-indigo, not purple) */
+  --color-paper:    oklch(12%  0.010 252);
+  --color-paper-2:  oklch(17%  0.012 252);
+  --color-paper-3:  oklch(22%  0.010 252);
+  --color-rule:     oklch(28%  0.009 252);
+  --color-muted:    oklch(52%  0.008 252);
+  --color-ink-2:    oklch(72%  0.006 252);
+  --color-ink:      oklch(93%  0.006 252);
+  --color-accent:   oklch(68%  0.170 252);
+  --color-accent-2: oklch(76%  0.120 252);
+  --color-focus:    oklch(72%  0.190 252);
+  --color-success:  oklch(72%  0.160 145);
+  --color-error:    oklch(65%  0.190  25);
+
+  /* ── Typography ─────────────────────────────── */
+  --font-display: "Geist", system-ui, sans-serif;
+  --font-body:    "Geist", system-ui, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "Courier New", monospace;
+
+  /* ── Type scale (1.25 major third, 16 px base) ── */
+  --text-xs:        0.64rem;
+  --text-sm:        0.8rem;
+  --text-base:      1rem;
+  --text-md:        1.25rem;
+  --text-lg:        1.5625rem;
+  --text-xl:        1.9531rem;
+  --text-2xl:       2.4414rem;
+  --text-3xl:       3.0518rem;
+  --text-4xl:       3.8147rem;
+  --text-display-s: clamp(2.5rem,  4vw + 1rem, 4rem);
+  --text-display:   clamp(3.25rem, 6vw + 1rem, 5.5rem);
+
+  /* ── Spacing (4-pt base) ─────────────────────── */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  2rem;
+  --space-xl:  3.5rem;
+  --space-2xl: 5rem;
+  --space-3xl: 7.5rem;
+
+  /* ── Radius ──────────────────────────────────── */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-pill: 9999px;
+
+  /* ── Motion ──────────────────────────────────── */
+  --dur-fast:    120ms;
+  --dur-mid:     240ms;
+  --dur-slow:    400ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
